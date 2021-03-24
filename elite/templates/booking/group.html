@@ -1,0 +1,213 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<title>Group Booking</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
+.myLink {display: none}
+</style>
+<body class="w3-light-grey">
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+    <div class="w3-bar w3-white w3-card" id="myNavbar">
+      <a href="{% url 'index' %}" class="w3-bar-item w3-button w3-wide"><b>ELITE AIRLINES</b></a>
+      <!-- Right-sided navbar links -->
+      <div class="w3-right w3-hide-small">
+        <a href="{% url 'index' %}" class="w3-bar-item w3-button"><i class="fa fa-home"></i>HOME</a>
+        <a href="{% url 'Book' %}" class="w3-bar-item w3-button"><i class="fa fa-plane"></i>BOOK</a>
+        <a href="{% url 'FAQs' %}" class="w3-bar-item w3-button"><i class="fa fa-question-circle-o"></i> FAQs</a>
+        <a href="{% url 'services' %}" class="w3-bar-item w3-button"><i class="fa fa-handshake-o"></i> SERVICES</a>
+        <a href="{% url 'contact' %}" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
+        <a href="{% url 'login' %}" class="w3-bar-item w3-button"><i class="fa fa-user"></i> LOGIN</a>
+        <a href="{% url 'about' %}" class="w3-bar-item w3-button"><i class="fa fa-info"></i> ABOUT US</a>
+      </div>
+      <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+  
+      <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+  </div>
+  
+  <!-- Sidebar on small screens when clicking the menu icon -->
+  <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+    <a href="#home" onclick="w3_close()" class="w3-bar-item w3-button">HOME</a>
+    <a href="#book" onclick="w3_close()" class="w3-bar-item w3-button">BOOK</a>
+    <a href="#faqs" onclick="w3_close()" class="w3-bar-item w3-button">FAQs</a>
+    <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button">SERVICES</a>
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+    <a href="#login" onclick="w3_close()" class="w3-bar-item w3-button">LOGIN</a>
+    <a href="#aboutus" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT US</a>
+  </nav>
+  
+<!-- Header -->
+<header class="w3-display-container w3-content w3-hide-small" style="max-width:1500px">
+  <img class="w3-image" src="{% static 'images/bookflight.jpg' %}" alt="London" width="1500" height="700">
+  <div class="w3-display-middle" style="width:65%">
+    <div class="w3-bar w3-black">
+      <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Flight');">One-Way</button>
+      <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Hotel');">Round Trip</button>
+      
+    </div>
+
+    <!-- Tabs -->
+    <div id="Flight" class="w3-container w3-white w3-padding-16 myLink">
+      <h3>Travel the world with us</h3>
+      <div class="w3-row-padding" style="margin:0 -16px;">
+        <div class="w3-half">
+          <label>From</label>
+          <input class="w3-input w3-border" type="text" placeholder="Departing from">
+        </div>
+        <div class="w3-half">
+          <label>To</label>
+          <input class="w3-input w3-border" type="text" placeholder="Arriving at">
+        </div>
+      </div>
+      <div class="w3-row-padding" style="margin:0 -16px;">
+        <div class="w3-half">
+          <label>Departure Date</label>
+          <input class="w3-input w3-border" type="text" placeholder="Departure Date">
+        </div>
+        <div class="w3-half">
+          <label>Return Date</label>
+          <input class="w3-input w3-border" type="text" placeholder="Return Date">
+        </div>
+      </div>
+      <div class="w3-row-padding" style="margin:0 -16px;">
+        <div class="w3-half">
+          <label>No.of Adults</label>
+          <input class="w3-input w3-border" type="text" placeholder="Adults">
+        </div>
+        <div class="w3-half">
+            <label>No.of Children(2-12 years)</label>
+            <input class="w3-input w3-border" type="text" placeholder="Children">
+          </div>
+        <div class="w3-half">
+          <label>Pay In</label>
+          <input class="w3-input w3-border" type="text" placeholder="Pay In(Currency)">
+        </div>
+        <div class="w3-half">
+            <label>Enter Coupan Code</label>
+            <input class="w3-input w3-border" type="text" placeholder="COUPAN CODE">
+          </div>
+      </div>
+      <p><button class="w3-button w3-dark-grey">Search and find flights</button></p>
+      
+    </div>
+    <div id="Hotel" class="w3-container w3-white w3-padding-16 myLink">
+        <h3>Travel the world with us</h3>
+        <div class="w3-row-padding" style="margin:0 -16px;">
+          <div class="w3-half">
+            <label>From</label>
+            <input class="w3-input w3-border" type="text" placeholder="Departing from">
+          </div>
+          <div class="w3-half">
+            <label>To</label>
+            <input class="w3-input w3-border" type="text" placeholder="Arriving at">
+          </div>
+        </div>
+        <div class="w3-row-padding" style="margin:0 -16px;">
+          <div class="w3-half">
+            <label>Departure Date</label>
+            <input class="w3-input w3-border" type="text" placeholder="Departure Date">
+          </div>
+          <div class="w3-half">
+            <label>Return Date</label>
+            <input class="w3-input w3-border" type="text" placeholder="Return Date">
+          </div>
+        </div>
+        <div class="w3-row-padding" style="margin:0 -16px;">
+          <div class="w3-half">
+            <label>No.of Adults</label>
+            <input class="w3-input w3-border" type="text" placeholder="Adults">
+          </div>
+          <div class="w3-half">
+              <label>No.of Children(2-12 years)</label>
+              <input class="w3-input w3-border" type="text" placeholder="Children">
+            </div>
+          <div class="w3-half">
+            <label>Pay In</label>
+            <input class="w3-input w3-border" type="text" placeholder="Pay In(Currency)">
+          </div>
+          <div class="w3-half">
+              <label>Enter Coupan Code</label>
+              <input class="w3-input w3-border" type="text" placeholder="COUPAN CODE">
+            </div>
+        </div>
+        <p><button class="w3-button w3-dark-grey">Search and find flights</button></p>
+        
+      </div>
+   
+  </div>
+</header>
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:1100px;">
+
+  <!-- Good offers -->
+  <div class="w3-container w3-margin-top">
+    <h3>Avail Offers Right Now</h3>
+    <h6>Up to <strong>50%</strong> discount. Use COUPAN </h6>
+    <p><a href="{% url 'bookflight' %}" class="w3-button w3-black w3-padding-large ">ELITE 50</a></p>
+  </div>
+  
+  <!-- Newsletter -->
+  <div class="w3-container">
+    <div class="w3-panel w3-padding-16 w3-black w3-opacity w3-card w3-hover-opacity-off">
+      <h2>Get the best offers first!</h2>
+      <p>Join our newsletter.</p>
+      <label>E-mail</label>
+      <input class="w3-input w3-border" type="text" placeholder="Your Email address">
+      <button type="button" class="w3-button w3-red w3-margin-top">Subscribe</button>
+    </div>
+  </div>
+  
+  
+  
+<!-- End page content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64">
+<a href="{% url 'bookflight' %}" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the Top</a>
+  <h5>Find Us On</h5>
+  <div class="w3-xlarge w3-padding-16">
+    <a href="https://www.facebook.com/"><i class="fa fa-facebook-official w3-hover-opacity"></i></a>
+    <a href="https://www.instagram.com/"><i class="fa fa-instagram w3-hover-opacity"></i></a>
+    <a href="https://www.snapchat.com/"><i class="fa fa-snapchat w3-hover-opacity"></i></a>
+    <a href="https://www.in.pinterest.com/"><i class="fa fa-pinterest-p w3-hover-opacity"></i></a>
+    <a href="https://www.twitter.com/"><i class="fa fa-twitter w3-hover-opacity"></i></a>
+    <a href="https://www.linkedin.com/"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
+  </div>
+  
+</footer>
+
+<script>
+// Tabs
+function openLink(evt, linkName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("myLink");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+  }
+  document.getElementById(linkName).style.display = "block";
+  evt.currentTarget.className += " w3-red";
+}
+
+// Click on the first tablink on load
+document.getElementsByClassName("tablink")[0].click();
+</script>
+
+</body>
+</html>

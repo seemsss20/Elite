@@ -1,0 +1,216 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<title>bookflight</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
+.myLink {display: none}
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: right;
+  font-family: arial;
+}
+
+.price {
+  color: grey;
+  font-size: 22px;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: right;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
+</style>
+
+
+<body class="w3-light-grey">
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+    <div class="w3-bar w3-white w3-card" id="myNavbar">
+      <a href="{% url 'index'%}" class="w3-bar-item w3-button w3-wide"><b>ELITE AIRLINES</b></a>
+      <!-- Right-sided navbar links -->
+      <div class="w3-right w3-hide-small">
+        <a href="{% url 'index' %}" class="w3-bar-item w3-button"><i class="fa fa-home"></i>HOME</a>
+        <a href="{% url 'Book' %}" class="w3-bar-item w3-button"><i class="fa fa-plane"></i>BOOK</a>
+        <a href="{% url 'FAQs' %}" class="w3-bar-item w3-button"><i class="fa fa-question-circle-o"></i> FAQs</a>
+        <a href="{% url 'services' %}" class="w3-bar-item w3-button"><i class="fa fa-handshake-o"></i> SERVICES</a>
+        <a href="{% url 'contact' %}" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
+        <a href="{% url 'login' %}" class="w3-bar-item w3-button"><i class="fa fa-user"></i> LOGIN</a>
+        <a href="{%url 'about' %}" class="w3-bar-item w3-button"><i class="fa fa-info"></i> ABOUT US</a>
+      </div>
+      <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+      <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Sidebar on small screens when clicking the menu icon -->
+  <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+    <a href="#home" onclick="w3_close()" class="w3-bar-item w3-button">HOME</a>
+    <a href="#book" onclick="w3_close()" class="w3-bar-item w3-button">BOOK</a>
+    <a href="#faqs" onclick="w3_close()" class="w3-bar-item w3-button">FAQs</a>
+    <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button">SERVICES</a>
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+    <a href="#login" onclick="w3_close()" class="w3-bar-item w3-button">LOGIN</a>
+    <a href="#aboutus" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT US</a>
+  </nav>
+
+<!-- Header -->
+<header class="w3-display-container w3-content w3-hide-small" style="max-width:1500px">
+  <img class="w3-image" src="{% static 'images/bookflight.jpg' %}" alt="London" width="1500" height="700">
+
+  <div class="w3-display-middle" style="width:65%">
+    <div class="w3-bar w3-black">
+      <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Flight');">One-Way</button>
+    </div>
+
+
+   <!-- Tabs -->
+    <div id="Flight" class="w3-container w3-white w3-padding-16 myLink">
+
+      <h3>Travel the world with us</h3>
+      <div class="w3-row-padding" style="margin:0 -20px;">
+        <div class="w3">
+          <form method="get">
+                    {{ filter_form.form }}
+
+                        <button class="btn btn-primary" type="submit">Search and Find Flights</button>
+		  </form>
+        </div>
+      </div>
+    </div>
+</div>
+</header>
+<!-- End page content -->
+</div>
+{% for i in city %}
+
+<!--<h2 style="text-align:center">Product Card</h2>-->
+
+<!--<div class="card">-->
+<!--  <img src="/w3images/jeans3.jpg" alt="Denim Jeans" style="width:100%">-->
+<!--  <h1>Tailored Jeans</h1>-->
+<!--  <p class="price">$19.99</p>-->
+<!--  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>-->
+<!--  <p><a href="{%url 'Book' %}" class="w3-button w3-black w3-padding-large ">BOOK NOW</a></p>-->
+<!--</div>-->
+
+ <div class="w3-row-padding" style="margin-top:50px">
+    <div class="w3-third w3-section">
+        {% if i.Airlines == 'Indigo' %}
+        <div class="w3-col l3 m6 w3-margin-bottom ">
+          <div class="w3-card">
+           <img src="{% static 'images/indigo.png' %}" alt="Mike" width="75" height="75" style="vertical-align:middle; margin:25px 25px">
+         </div>
+      </div>
+       {% endif %}
+      {% if i.Airlines == 'Vistara' %}
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <div class="w3-card">
+           <img src="{% static 'images/vistara.png' %}" alt="Mike" width="75" height="75" style="vertical-align:middle; margin:25px 25px" >
+         </div>
+      </div>
+       {% endif %}
+         {% if i.Airlines == 'AirAsia' %}
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <div class="w3-card">
+           <img src="{% static 'images/airasia.png' %}" alt="Mike" width="75" height="75" style="vertical-align:middle; margin:25px 25px" >
+         </div>
+      </div>
+       {% endif %}
+      {% if i.Airlines == 'SpiceJet' %}
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <div class="w3-card">
+           <img src="{% static 'images/spicejet.png' %}" alt="Mike" width="75" height="75" style="vertical-align:middle; margin:25px 25px">
+         </div>
+      </div>
+       {% endif %}
+         {% if i.Airlines == 'AirIndia' %}
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <div class="w3-card">
+           <img src="{% static 'images/airindia.jpg' %}" alt="Mike" width="75" height="75" style="vertical-align:middle; margin:25px 25px" >
+         </div>
+      </div>
+       {% endif %}
+      <ul class="w3-ul w3-white w3-hover-shadow">
+        <li class="w3-black w3-xlarge w3-padding-32">6E-{{i.Date}} <br>{{i.DESTINATION}} -> {{i.ARRIVAL}}
+
+        </li>
+
+        <li class="w3-padding-16"><b>{{i.Airlines}} </b> </li>
+        <li class="w3-padding-16"><b> {{i.Depart_time}} - {{i.Arrival_time}}</b> </li>
+        <li class="w3-padding-16"><b>Rs. {{i.Fare}}</b></li>
+        <li class="w3-padding-16"><b>Non-Stop</b></li>
+        <li class="w3-light-grey w3-padding-24">
+
+          <p><a href="{% url 'details' i.Sr_No %}" class="w3-button w3-black w3-padding-large ">BOOK NOW</a></p>
+        </li>
+
+      </ul>
+    </div>
+ </div>
+
+    {% endfor %}
+
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64">
+<a href="{% url 'bookflight' %}" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the Top</a>
+  <h5>Find Us On</h5>
+  <div class="w3-xlarge w3-padding-16">
+    <a href="https://www.facebook.com/"><i class="fa fa-facebook-official w3-hover-opacity"></i></a>
+    <a href="https://www.instagram.com/"><i class="fa fa-instagram w3-hover-opacity"></i></a>
+    <a href="https://www.snapchat.com/"><i class="fa fa-snapchat w3-hover-opacity"></i></a>
+    <a href="https://www.in.pinterest.com/"><i class="fa fa-pinterest-p w3-hover-opacity"></i></a>
+    <a href="https://www.twitter.com/"><i class="fa fa-twitter w3-hover-opacity"></i></a>
+    <a href="https://www.linkedin.com/"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
+  </div>
+
+</footer>
+
+<script>
+// Tabs
+function openLink(evt, linkName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("myLink");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+  }
+  document.getElementById(linkName).style.display = "block";
+  evt.currentTarget.className += " w3-red";
+}
+
+// Click on the first tablink on load
+document.getElementsByClassName("tablink")[0].click();
+</script>
+
+</body>
+</html>
+

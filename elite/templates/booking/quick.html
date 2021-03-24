@@ -1,0 +1,130 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
+.w3-sidebar {
+  z-index: 3;
+  width: 250px;
+  top: 43px;
+  bottom: 0;
+  height: inherit;
+}
+</style>
+<body>
+
+  <!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card" id="myNavbar">
+    <a href="{% url 'index' %}" class="w3-bar-item w3-button w3-wide"><b>ELITE AIRLINES</b></a>
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+      <a href="{% url 'index' %}" class="w3-bar-item w3-button"><i class="fa fa-home"></i>HOME</a>
+      <a href="{% url 'Book' %}" class="w3-bar-item w3-button"><i class="fa fa-plane"></i>BOOK</a>
+      <a href="{% url 'FAQs' %}" class="w3-bar-item w3-button"><i class="fa fa-question-circle-o"></i> FAQs</a>
+      <a href="{% url 'services' %}" class="w3-bar-item w3-button"><i class="fa fa-handshake-o"></i> SERVICES</a>
+      <a href="{% url 'contact' %}" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
+      <a href="{% url 'login' %}" class="w3-bar-item w3-button"><i class="fa fa-user"></i> LOGIN</a>
+      <a href="{% url 'about' %}" class="w3-bar-item w3-button"><i class="fa fa-info"></i> ABOUT US</a>
+    </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+  <a href="#home" onclick="w3_close()" class="w3-bar-item w3-button">HOME</a>
+  <a href="#book" onclick="w3_close()" class="w3-bar-item w3-button">BOOK</a>
+  <a href="#faqs" onclick="w3_close()" class="w3-bar-item w3-button">FAQs</a>
+  <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button">SERVICES</a>
+  <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+  <a href="#login" onclick="w3_close()" class="w3-bar-item w3-button">LOGIN</a>
+  <a href="#aboutus" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT US</a>
+</nav>
+<!-- Sidebar -->
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
+    <i class="fa fa-remove"></i>
+  </a>
+  <h4 class="w3-bar-item"><b>Book</b></h4>
+        
+  <a class="w3-bar-item w3-button w3-hover-black" href="{% url 'bookflight' %}"><i class="fa fa-plane w3-hover-opacity"></i>    Site Map</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="{% url 'view' %}"> <i class="fa fa-edit w3-hover-opacity"></i>   Terms and Conditions</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="https://www.trivago.in/"> <i class="fa fa-building w3-hover-opacity"></i>   Privacy Policy</a>
+ </nav>
+<!-- Image Header -->
+<div class="w3-display-container w3-animate-opacity">
+  <img src="../asset/bookflight.jpg" alt="boat" style="width:100%;min-height:400px;max-height:750px;">
+</div>
+<div class="w3-display-bottomright w3-text-white" style="padding:48px">
+  <span class="w3-xlarge"><b>A Great way to Fly</b> </span>
+<p><a href="{% url 'bookflight' %}" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Learn more </a></p>
+</div> 
+  <div class="w3-display-bottomleft w3-text-white" style="padding:48px"><br>
+
+  </div>
+</div>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
+<div class="w3-main" style="margin-left:250px">
+
+  
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64">
+  <a href="{% url 'Book' %}" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <div class="w3-xlarge w3-section">
+    <a href="https://www.facebook.com/"><i class="fa fa-facebook-official w3-hover-opacity"></i></a>
+    <a href="https://www.instagram.com/"><i class="fa fa-instagram w3-hover-opacity"></i></a>
+    <a href="https://www.snapchat.com/"><i class="fa fa-snapchat w3-hover-opacity"></i></a>
+    <a href="https://www.in.pinterest.com/"><i class="fa fa-pinterest-p w3-hover-opacity"></i></a>
+    <a href="https://www.twitter.com/"><i class="fa fa-twitter w3-hover-opacity"></i></a>
+    <a href="https://www.linkedin.com/"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
+  </div>
+  </footer>
+
+  
+<!-- END MAIN -->
+</div>
+
+<script>
+// Get the Sidebar
+var mySidebar = document.getElementById("mySidebar");
+
+// Get the DIV with overlay effect
+var overlayBg = document.getElementById("myOverlay");
+
+// Toggle between showing and hiding the sidebar, and add overlay effect
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+    overlayBg.style.display = "none";
+  } else {
+    mySidebar.style.display = 'block';
+    overlayBg.style.display = "block";
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+  mySidebar.style.display = "none";
+  overlayBg.style.display = "none";
+}
+</script>
+
+</body>
+</html>

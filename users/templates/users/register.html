@@ -1,0 +1,114 @@
+
+{% load crispy_forms_tags %}
+
+
+<!DOCTYPE html>
+<html>
+<title>Login</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body id="myPage">
+
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card" id="myNavbar">
+    <a href="{% url 'index' %}" class="w3-bar-item w3-button w3-wide"><b>ELITE AIRLINES</b></a>
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+      <a href="{% url 'index' %}" class="w3-bar-item w3-button"><i class="fa fa-home"></i>HOME</a>
+      <a href="{% url 'Book' %}" class="w3-bar-item w3-button"><i class="fa fa-plane"></i>BOOK</a>
+      <a href="{% url 'FAQs' %}" class="w3-bar-item w3-button"><i class="fa fa-question-circle-o"></i> FAQs</a>
+      <a href="{% url 'services' %}" class="w3-bar-item w3-button"><i class="fa fa-handshake-o"></i> SERVICES</a>
+      <a href="{% url 'contact' %}" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
+      <a href="{% url 'login' %}" class="w3-bar-item w3-button"><i class="fa fa-user"></i> LOGIN</a>
+      <a href="{% url 'about' %}" class="w3-bar-item w3-button"><i class="fa fa-info"></i> ABOUT US</a>
+    </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+  <a href="#home" onclick="w3_close()" class="w3-bar-item w3-button">HOME</a>
+  <a href="#book" onclick="w3_close()" class="w3-bar-item w3-button">BOOK</a>
+  <a href="#faqs" onclick="w3_close()" class="w3-bar-item w3-button">FAQs</a>
+  <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button">SERVICES</a>
+  <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+  <a href="#login" onclick="w3_close()" class="w3-bar-item w3-button">LOGIN</a>
+  <a href="#aboutus" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT US</a>
+</nav>
+
+
+<!DOCTYPE html>
+<html>
+    
+<head>
+	<title>Login</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			background: #f7c1a2 !important;
+		}
+		.login_btn {
+			width: 100%;
+			background: #f8a75b !important;
+			color: white !important;
+		}
+		.login_btn:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}
+		.login_container {
+			padding: 0 2rem;
+		}
+	</style>
+
+		
+
+		<div class="content-section">
+			<form method="POST">
+				{% csrf_token %}
+				<div class="row justify-content-center">
+                    <div class="col-md-5">
+                        <div class="row">
+
+				<fieldset class="form-group">
+					<legend class="border-bottom mb-2">Join Today</legend>
+					{{ form|crispy }}
+				</fieldset>
+				<div class="col-md-12 form-group">
+
+					<div class="text-center">
+						<input type="submit" value="Register" class="btn btn-primary btn-lg px-5">
+			</form>
+			<div class="border-top pt-3">
+				<small class="text-muted">
+					Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
+				</small>
+			</div>
+		</div>
+		{% if messages %}
+		<ul class="messages">
+			{% for message in messages %}
+			<li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+			{% endfor %}
+		</ul>
+		{% endif %}
+
+	</head>
+	</html>

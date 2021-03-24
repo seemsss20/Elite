@@ -1,0 +1,156 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<title>Services</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+</style>
+<body>
+
+    <!-- Navbar (sit on top) -->
+<div class="w3-top">
+    <div class="w3-bar w3-white w3-card" id="myNavbar">
+      <a href="{% url 'Book' %}" class="w3-bar-item w3-button w3-wide"><b>ELITE AIRLINES</b></a>
+      <!-- Right-sided navbar links -->
+      <div class="w3-right w3-hide-small">
+        <a href="{% url 'index' %}" class="w3-bar-item w3-button"><i class="fa fa-home"></i>HOME</a>
+        <a href="{% url 'Book' %}" class="w3-bar-item w3-button"><i class="fa fa-plane"></i>BOOK</a>
+        <a href="{% url 'FAQs' %}" class="w3-bar-item w3-button"><i class="fa fa-question-circle-o"></i> FAQs</a>
+        <a href="{% url 'services' %}" class="w3-bar-item w3-button"><i class="fa fa-handshake-o"></i> SERVICES</a>
+        <a href="{% url 'contact' %}" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
+        <a href="{% url 'login' %}" class="w3-bar-item w3-button"><i class="fa fa-user"></i> LOGIN</a>
+        <a href="{% url 'about' %}" class="w3-bar-item w3-button"><i class="fa fa-info"></i> ABOUT US</a>
+      </div>
+      <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+  
+      <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+  </div>
+  
+  <!-- Sidebar on small screens when clicking the menu icon -->
+  <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+    <a href="#home" onclick="w3_close()" class="w3-bar-item w3-button">HOME</a>
+    <a href="#book" onclick="w3_close()" class="w3-bar-item w3-button">BOOK</a>
+    <a href="#faqs" onclick="w3_close()" class="w3-bar-item w3-button">FAQs</a>
+    <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button">SERVICES</a>
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+    <a href="#login" onclick="w3_close()" class="w3-bar-item w3-button">LOGIN</a>
+    <a href="#aboutus" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT US</a>
+  </nav>
+  
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-blue w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Our Services</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">6-E Prime</a> 
+    <a href="#showcase" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Seat Plus</a> 
+    <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Medical Assistance</a> 
+    <a href="#designers" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Special Disability Assistance</a> 
+    
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-black w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-black w3-margin-right" onclick="w3_open()">☰</a>
+  <span>Company Name</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  <!-- Header -->
+  <div class="w3-container" style="margin-top:80px" id="showcase">
+    <h1 class="w3-jumbo"><b><u>Let's have a look!</u></b></h1>
+    <h1 class="w3-xxxlarge w3-text-blue"><b>6-E Prime</b></h1>
+    <hr style="width:50px;border:5px solid skyblue" class="w3-round">
+  </div>
+  
+  <!-- Photo grid (modal) -->
+  <p>Terms and conditions:</br>
+    Passengers booking Elite flights have the option to buy ‘6E Prime’ which entitles each passenger to the following services upon payment of Fees:</br>(i) seat selection (except for XL seats, which can be purchased at a 50% discount to their original price, if such seats are purchased at the time buying 6E Prime), </br>(ii) snack (one food item and one beverage as selected at the time of purchasing 6E Prime. If no selection is made, a snack and beverage available on the flight shall be served), and </br>(iii) Fast Forward. 6E Prime is not available for group bookings .    </p>
+ 
+
+  <!-- Services -->
+  <div class="w3-container" id="services" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-blue"><b>Seat Plus</b></h1>
+    <hr style="width:50px;border:5px solid skyblue" class="w3-round">
+    Seat Plus - Preferential Seating</br>
+        An unbundled service as per Air Transport Circular 02 of 2016 issued by DGCA. These are optional services available at an additional charge for convenience of our passenger.</br> Booking of the ticket can be made without opting /availing these unbundled services.</p>
+    <p></p></div>
+  
+  <!-- Designers -->
+  <div class="w3-container" id="designers" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-blue"><b>Medical Assistance</b></h1>
+    <hr style="width:50px;border:5px solid skyblue" class="w3-round">
+    <p>Customers who are ailing from any particular medical condition can travel on Elite after giving prior medical information as per the medical form provided on the Elite Website, in order for Elite to provide complete assistance.</br>
+
+ 
+
+        Medical Information must be provided to Elite at least 72 hours prior to the scheduled departure of the flight.</br>
+        The customer must also inform Elite regarding any hospitalisation requirement upon arrival. </br>
+        In case a Customer will be accompanied by a safety assistant during travel then his/her name and contact details must also be shared with Elite.</p>
+    <p>
+  </div>
+
+  
+
+  <!-- Packages / Pricing Tables -->
+  <div class="w3-container" id="packages" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-blue"><b>Special Disability Assistance</b></h1>
+    <hr style="width:50px;border:5px solid skyblue" class="w3-round">
+   <p>Elite welcomes the opportunity to provide caring customer service to our customers with disabilities. To be able to assist you the best, we request you to notify us of your special needs/wheelchair request at least forty eight (48) hours prior to the schedule departure of your flight.</br> While making your booking please let us know how we can best assist you and what seat will best accommodate your needs. If you arrive at the airport without a seat assignment, we will make every effort to provide the requested accommodation.</br>
+
+   </br>
+
+    Note: </br>In compliance with current regulations, if any of our customer has limited mobility, is hearing or visually impaired, is unable to understand/react to safety instructions, we will be unable to allocate a seat in the emergency exit rows.</br>
+    
+    To ensure a seamless check-in and boarding experience, we request you to report at least two (2) hours prior to the scheduled time of flight departure at the reservation counter.</p> </div>
+
+  
+  
+
+<!-- End page content -->
+</div>
+
+<!-- W3.CSS Container -->
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+</script>
+
+</body>
+</html>
